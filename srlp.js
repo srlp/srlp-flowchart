@@ -33,7 +33,7 @@ const callUs = `
   </div>
   <h1 class="fade">Leave us a voicemail at (212) 337-8550 ext. 308.</h1>`;
 const emailUs = `
-  <h1 class="fade">Email us at info@srlp.org or use the online form below.</h1>
+  <h1 class="fade">Email us at info@srlp.org or contact us <a href="https://srlp.org/about/contact/">here</a>.</h1>
   <div class="app__svg fade">
     <i class="fas fa-envelope-open fa-5x"></i>
   </div>`;
