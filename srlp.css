@@ -38,6 +38,8 @@
   max-width: 750px;
   margin: auto;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 #app .app__buttons {
@@ -96,4 +98,23 @@
 .svg-inline--fa {
   display: block;
   margin: 0 auto;
+}
+
+@media screen and (min-width: 480px) {
+  #app h1 {
+    font-size: 48px;
+  }
+  
+  #app .app__buttons {
+    flex-direction: column;
+  }
+
+  #app .app__button {
+    font-size: 48px;
+    margin: 0.2em;
+  }
+
+  #app .app__svg {
+    font-size: 32px;
+  }
 }
