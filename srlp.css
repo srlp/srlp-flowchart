@@ -1,0 +1,81 @@
+#app {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+}  
+
+#app h1 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#app .app__container, .app__container--new {
+  margin: 0 auto;
+  background: #007ac7;
+  color: white;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+}
+
+#app .app__container .app__text {
+  max-width: 750px;
+  margin: auto;
+  text-align: center;
+}
+
+#app .app__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#app .app__svg {
+  margin-bottom: 70px;
+}
+
+#app .app__button {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75em 3em;
+  margin: 1em;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+#app .app__button .app__svg {
+  margin-bottom: 0;
+}
+
+#app .app__button--special {
+  display: inline-block;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+#app .app__button:hover {
+  background: white;
+  color: black;
+  transition: all 0.3s;
+}
+
+.svg-inline--fa {
+  display: block;
+  margin: 0 auto;
+}
