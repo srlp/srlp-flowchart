@@ -23,6 +23,20 @@
   margin: 10px;
 }
 
+#app .app__back {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#app .app__back:hover {
+  color: white;
+  transition: color 0.3s;
+}
+
 #app .app__container, .app__container--new {
   margin: 0 auto;
   background: #007ac7;
@@ -53,7 +67,7 @@
 }
 
 #app .app__svg {
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 
 #app .app__button {
@@ -76,8 +90,7 @@
 
 #app .app__button--special {
   display: inline-block;
-  margin-top: -10px;
-  margin-bottom: 30px;
+  margin-top: -15px;
 }
 
 #app .app__button:hover {
@@ -106,7 +119,7 @@
 
 @media screen and (max-width: 640px), screen and (max-device-width: 640px) {
   #app h1 {
-    font-size: 48px;
+    font-size: 30px;
   }
   
   #app .app__buttons {
@@ -114,11 +127,11 @@
   }
 
   #app .app__button {
-    font-size: 48px;
+    font-size: 30px;
     margin: 0.2em;
   }
 
   #app .app__svg {
-    font-size: 32px;
+    font-size: 20px;
   }
 }

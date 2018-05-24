@@ -1,10 +1,26 @@
-const liveInNewYork = `
-  <h1 class="fade">Are you a transgender, gender non-conforming, and/or intersex (TGNCI) person who lives in New York City or is incarcerated in New York State?</h1>
-  <div class="app__svg fade">
+const backArrow = `
+  <div class="app__back" onClick="handleBack()">
+    <i class="fas fa-arrow-left fa-2x"></i>
+  </div>`;
+const transgenderQuestion = `
+  <h1 class="fade">Do you identify as a transgender, gender non-conforming, and/or intersex (TGNCI) person?</h1>
+  <div class="app__svg fade">  
     <i class="fas fa-transgender-alt fa-5x"></i>
   </div>`;
+const liveInNewYork = `
+  <h1 class="fade">Do you live in New York City or are you incarcerated in New York State?</h1>
+  <div class="app__svg fade">  
+    <i class="far fa-map fa-5x"></i>
+  </div>`;
+const notTransgender = `
+  <h1 class="fade">The best place to start looking for legal services if you are not TGNCI is your local legal aid office.</h1>
+  <div class="app__svg fade">  
+    <i class="fas fa-balance-scale fa-5x"></i>
+  </div>
+  <h1 class="fade">If you have access to the internet, search for legal aid in your city or country.</h1>
+  <h1 class="fade">The legal aid organizations for New York City where Sylvia Rivera Law Project is based are Legal Services NYC at (917) 661-4500 and the Legal Aid Society at (212) 577-3300.</h1>`;  
 const liveOutsideNewYork = `
-  <h1 class="fade">If you live outside of New York City or are incarcerated outside of New York State...</h1>`;
+  <h1 class="fade">We always want to provice support to TGNCI people of color and low-income TGNCI people across the world but we are NOT ABLE to provide legal services outside of New York State. That said, we may be able to point you towards legal and non-legal resources that may be helpful for you.</h1>`;
 const scheduledAppointment = `
   <h1 class="fade">Do you want a <b>scheduled</b> appointment?</h1>
   <div class="app__button app__button--special app__button--schedule fade" onClick="handleScheduleClick()">
@@ -32,11 +48,32 @@ const callUs = `
     <i class="fas fa-phone fa-5x"></i>
   </div>
   <h1 class="fade">Leave us a voicemail at (212) 337-8550 ext. 308.</h1>`;
+const callUsAlt = `
+  <h1 class="fade">Call us!</h1>
+  <div class="app__button app__button--special app__button--schedule fade" onClick="handleCallClick()">
+    <div class="app__svg">
+      <i class="fas fa-phone fa-5x"></i>
+    </div>
+  </div>`;
 const emailUs = `
   <h1 class="fade">Email us at info@srlp.org or contact us <a href="https://srlp.org/about/contact/">here</a>.</h1>
   <div class="app__svg fade">
     <i class="fas fa-envelope-open fa-5x"></i>
   </div>`;
+const emailUsAlt = `
+  <h1 class="fade">Email us!</h1>
+  <div class="app__button app__button--special app__button--schedule fade" onClick="handleEmailClick()">
+    <div class="app__svg">
+      <i class="far fa-envelope-open fa-5x"></i>
+    </div>
+  </div>`;
+const writeUsAlt = `
+  <h1 class="fade">Write us!</h1> 
+  <div class="app__button app__button--special app__button--schedule fade" onClick="handleWriteClick()">
+    <div class="app__svg">
+      <i class="far fa-edit fa-5x"></i>
+    </div>
+  </div>`;  
 const writeUs = `
   <h1 class="fade">Write us!</h1> 
   <div class="app__svg fade">
@@ -69,11 +106,18 @@ const unableToUse = `
   <h1 class="fade">People unable to use the phone, email, or walk-in system can write us a letter.
   <h1 class="fade">If you are incarcerated and need to use the name of an attorney, you can add "Attn: Mik Kinkead, Esq."</h1>`;
 
-const yesNo = `
+const transgenderYesNo = `
   <div class="app__buttons fade">
-    <div class="app__button app__button--yes" onClick="handleYesClick()">Yes</div>
-    <div class="app__button app__button--no onClick="handleNoClick()">No</div>
-  </div>`
+    <div class="app__button app__button--yes" onClick="handleTransgenderClick()">Yes</div>
+    <div class="app__button app__button--no" onClick="handleTransgenderNoClick()">No</div>
+  </div>`;
+const newYorkYesNo = `
+  <div class="app__buttons fade">
+    <div class="app__button app__button--yes" onClick="handleNewYorkClick()">Yes</div>
+    <div class="app__button app__button--no" onClick="handleNewYorkNoClick()">No</div>
+  </div>`;
+const next = `
+  <div class="app__buttons fade"><div class="app__button" onClick="handleNextClick()">Next</div></div>`;  
 
 const replaceHtml = ($container, html) => {
   $container.html(html);
@@ -84,8 +128,8 @@ const replaceHtml = ($container, html) => {
   })
 }
 
-const replacePage = ($container, html, color) => {
-  $container.parent().append('<div class="app__container--new"><div class="app__text"></div></div>');
+const replacePage = (html, klass, color) => {
+  $('#app').find('.app__container').parent().append(`<div class="app__container--new ${klass}">${klass ? backArrow : ''}<div class="app__text"></div></div>`);
   $('.app__container--new').css({
     'position': 'absolute',
     'z-index': 99,
@@ -100,7 +144,7 @@ const replacePage = ($container, html, color) => {
     $('.app__text').css({
       'margin': 'auto',
     });
-    $('.app__container:first-child').remove();
+    $($('.app__container')[0]).remove();
     replaceHtml($('.app__text'), html);
   });
 }
@@ -110,21 +154,65 @@ $(document).ready(() => {
   $app.css('display', 'flex');
   $app.html('<div class="app__container"><div class="app__text"></div></div>');
   const $container = $app.find('.app__container');
-  replaceHtml($container.find('.app__text'), liveInNewYork + yesNo);
+  replaceHtml($container.find('.app__text'), transgenderQuestion + transgenderYesNo);
 })
 
-const handleYesClick = () => {
-  replacePage($('#app').find('.app__container'), scheduledAppointment + walkinHours + difficultOrNotPossible, '#26A65B');
+const handleNewYorkClick = () => {
+  replacePage(scheduledAppointment + walkinHours + difficultOrNotPossible, 'come-in', '#26A65B');
+}
+
+const handleNewYorkNoClick = () => {
+  replacePage(liveOutsideNewYork + next, 'outside-ny', '#d64541');
+}
+
+const handleTransgenderClick = () => {
+  replacePage(liveInNewYork + newYorkYesNo, 'live-in-new-york', '#f9690e')
+}
+
+const handleTransgenderNoClick = () => {
+  replacePage(notTransgender, 'not-transgender', '#d64541');
+}
+
+const handleNextClick = () => {
+  replacePage(callUsAlt + emailUsAlt + writeUsAlt, 'alt', '#26a65b')
 }
 
 const handleScheduleClick = () => {
-  replacePage($('#app').find('.app__container'), callUs + emailUs + getBackToYou, '#913D88');
+  replacePage(callUs + emailUs + getBackToYou, 'schedule', '#913D88');
 }
 
 const handleWalkClick = () => {
-  replacePage($('#app').find('.app__container'), comeIn + legalAdvocate, '#913D88');
+  replacePage(comeIn + legalAdvocate, 'walk-in', '#913D88');
 }
 
 const handleDifficultClick = () => {
-  replacePage($('#app').find('.app__container'), writeUs + unableToUse, '#913D88');
+  replacePage(writeUs + unableToUse, 'difficult', '#913D88');
+}
+
+const handleCallClick = () => {
+  replacePage(callUs + getBackToYou, 'call', '#913D88');
+}
+
+const handleEmailClick = () => {
+  replacePage(emailUs + getBackToYou, 'email', '#913D88');
+}
+
+const handleWriteClick = () => {
+  replacePage(writeUs + unableToUse, 'write', '#913D88');
+}
+
+const handleBack = () => {
+  if ($('.live-in-new-york').length || $('.not-transgender').length) {
+    replacePage(transgenderQuestion + transgenderYesNo, '', '#007ac7');
+  } else if ($('.come-in').length) {
+    replacePage(liveInNewYork + newYorkYesNo, 'live-in-new-york', '#f9690e');
+  } else if ($('.schedule').length || $('.walk-in').length || $('.difficult').length) {
+    replacePage(scheduledAppointment + walkinHours + difficultOrNotPossible, 'come-in', '#36a65b');
+  } else if ($('.outside-ny').length) {
+    replacePage(liveInNewYork + newYorkYesNo, 'live-in-new-york', '#f9690e');
+  } else if ($('.alt').length) {
+    replacePage(liveOutsideNewYork + next, 'outside-ny', '#d64541');
+  } else if ($('.call').length || $('.write').length || $('.email').length) {
+    replacePage(callUsAlt + emailUsAlt + writeUsAlt, 'alt', '#26a65b');
+  }
 }
