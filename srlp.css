@@ -119,7 +119,7 @@
 
 @media screen and (max-width: 640px), screen and (max-device-width: 640px) {
   #app h1 {
-    font-size: 30px;
+    font-size: 16px;
   }
   
   #app .app__buttons {
@@ -127,11 +127,11 @@
   }
 
   #app .app__button {
-    font-size: 30px;
+    font-size: 16px;
     margin: 0.2em;
   }
 
   #app .app__svg {
-    font-size: 20px;
+    font-size: 10px;
   }
 }

@@ -17,10 +17,10 @@ const notTransgender = `
   <div class="app__svg fade">  
     <i class="fas fa-balance-scale fa-5x"></i>
   </div>
-  <h1 class="fade">If you have access to the internet, search for legal aid in your city or country.</h1>
+  <h1 class="fade">If you have access to the internet, search for legal aid in your city or county.</h1>
   <h1 class="fade">The legal aid organizations for New York City where Sylvia Rivera Law Project is based are Legal Services NYC at (917) 661-4500 and the Legal Aid Society at (212) 577-3300.</h1>`;  
 const liveOutsideNewYork = `
-  <h1 class="fade">We always want to provice support to TGNCI people of color and low-income TGNCI people across the world but we are NOT ABLE to provide legal services outside of New York State. That said, we may be able to point you towards legal and non-legal resources that may be helpful for you.</h1>`;
+  <h1 class="fade">We always want to provide support to TGNCI people of color and low-income TGNCI people across the world but we are NOT ABLE to provide legal services outside of New York State. That said, we may be able to point you towards legal and non-legal resources that may be helpful for you.</h1>`;
 const scheduledAppointment = `
   <h1 class="fade">Do you want a <b>scheduled</b> appointment?</h1>
   <div class="app__button app__button--special app__button--schedule fade" onClick="handleScheduleClick()">
