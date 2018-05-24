@@ -1,3 +1,10 @@
+let language = 'eng';
+
+const selectLanguage = `
+  <div class="app__buttons fade">
+    <div class="app__button app__button--eng" onClick="handleEngClick()">English</div>
+    <div class="app__button app__button--esp" onClick="handleEspClick()">Español</div>
+  </div>`;
 const backArrow = `
   <div class="app__back" onClick="handleBack()">
     <i class="fas fa-arrow-left fa-2x"></i>
@@ -154,8 +161,18 @@ $(document).ready(() => {
   $app.css('display', 'flex');
   $app.html('<div class="app__container"><div class="app__text"></div></div>');
   const $container = $app.find('.app__container');
-  replaceHtml($container.find('.app__text'), transgenderQuestion + transgenderYesNo);
+  replaceHtml($container.find('.app__text'), selectLanguage);
 })
+
+const handleEngClick = () => {
+  language = 'eng';
+  replacePage(transgenderQuestion + transgenderYesNo, 'transgender', '#007ac7');
+}
+
+const handleEspClick = () => {
+  language = 'esp';
+  replacePage(transgenderQuestion + transgenderYesNo, 'transgender', '#007ac7');
+}
 
 const handleNewYorkClick = () => {
   replacePage(scheduledAppointment + walkinHours + difficultOrNotPossible, 'come-in', '#26A65B');
@@ -202,8 +219,10 @@ const handleWriteClick = () => {
 }
 
 const handleBack = () => {
-  if ($('.live-in-new-york').length || $('.not-transgender').length) {
-    replacePage(transgenderQuestion + transgenderYesNo, '', '#007ac7');
+  if ($('.transgender').length) {
+    replacePage(selectLanguage, '', '#913D88');
+  } else if ($('.live-in-new-york').length || $('.not-transgender').length) {
+    replacePage(transgenderQuestion + transgenderYesNo, 'transgender', '#007ac7');
   } else if ($('.come-in').length) {
     replacePage(liveInNewYork + newYorkYesNo, 'live-in-new-york', '#f9690e');
   } else if ($('.schedule').length || $('.walk-in').length || $('.difficult').length) {
