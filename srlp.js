@@ -1,4 +1,5 @@
 const selectLanguage = `
+  <img class='fade' src='liberation.png' /> 
   <div class="app__buttons fade">
     <div class="app__button app__button--eng" onClick="handleEngClick()">English</div>
     <div class="app__button app__button--esp" onClick="handleEspClick()">Espa&ntilde;ol</div>
@@ -61,7 +62,7 @@ let callUsAlt = `
     </div>
   </div>`;
 let emailUs = `
-  <h1 class="fade">Email us at info@srlp.org or contact us <a href="https://srlp.org/about/contact/">here</a>.</h1>
+  <h1 class="fade">Or email us at info@srlp.org or contact us <a href="https://srlp.org/about/contact/">here</a>.</h1>
   <div class="app__svg fade">
     <i class="fas fa-envelope-open fa-5x"></i>
   </div>`;
@@ -163,6 +164,121 @@ $(document).ready(() => {
 })
 
 const handleEngClick = () => {
+  transgenderQuestion = `
+    <h1 class="fade">Do you identify as a transgender, gender non-conforming, and/or intersex (TGNCI) person?</h1>
+    <div class="app__svg fade">  
+      <i class="fas fa-transgender-alt fa-5x"></i>
+    </div>`;
+  liveInNewYork = `
+    <h1 class="fade">Do you live in New York City or are you incarcerated in New York State?</h1>
+    <div class="app__svg fade">  
+      <i class="far fa-map fa-5x"></i>
+    </div>`;
+  notTransgender = `
+    <h1 class="fade">The best place to start looking for legal services if you are not TGNCI is your local legal aid office.</h1>
+    <div class="app__svg fade">  
+      <i class="fas fa-balance-scale fa-5x"></i>
+    </div>
+    <h1 class="fade">If you have access to the internet, search for legal aid in your city or county.</h1>
+    <h1 class="fade">The legal aid organizations for New York City where Sylvia Rivera Law Project is based are Legal Services NYC at (917) 661-4500 and the Legal Aid Society at (212) 577-3300.</h1>`;  
+  liveOutsideNewYork = `
+    <h1 class="fade">We always want to provide support to TGNCI people of color and low-income TGNCI people across the world but we are NOT ABLE to provide legal services outside of New York State. That said, we may be able to point you towards legal and non-legal resources that may be helpful for you.</h1>`;
+  scheduledAppointment = `
+    <h1 class="fade">Do you want a <b>scheduled</b> appointment?</h1>
+    <div class="app__button app__button--special app__button--schedule fade" onClick="handleScheduleClick()">
+      <div class="app__svg">
+        <i class="far fa-calendar-check fa-5x"></i>
+      </div>
+    </div>`;
+  walkinHours = `
+    <h1 class="fade">Do you want to come during <b>walk-in</b> hours?</h1>
+    <div class="app__button app__button--special app__button--walk fade" onClick="handleWalkClick()">
+      <div class="app__svg">
+        <i class="fas fa-walking fa-5x"></i>
+      </div>
+    </div>`;
+  difficultOrNotPossible = `
+    <h1 class="fade">Is coming to our office <b>difficult</b> or <b>not possible</b>?</h1>
+    <div class="app__button app__button--special app__button--difficult fade" onClick="handleDifficultClick()">
+      <div class="app__svg">
+        <i class="fab fa-accessible-icon fa-5x"></i>
+      </div>
+    </div>`;
+  callUs = `
+    <h1 class="fade">Call us!</h1>
+    <div class="app__svg fade">
+      <i class="fas fa-phone fa-5x"></i>
+    </div>
+    <h1 class="fade">Leave us a voicemail at (212) 337-8550 ext. 308.</h1>`;
+  callUsAlt = `
+    <h1 class="fade">Call us!</h1>
+    <div class="app__button app__button--special app__button--schedule fade" onClick="handleCallClick()">
+      <div class="app__svg">
+        <i class="fas fa-phone fa-5x"></i>
+      </div>
+    </div>`;
+  emailUs = `
+    <h1 class="fade">Or email us at info@srlp.org or contact us <a href="https://srlp.org/about/contact/">here</a>.</h1>
+    <div class="app__svg fade">
+      <i class="fas fa-envelope-open fa-5x"></i>
+    </div>`;
+  emailUsAlt = `
+    <h1 class="fade">Email us!</h1>
+    <div class="app__button app__button--special app__button--schedule fade" onClick="handleEmailClick()">
+      <div class="app__svg">
+        <i class="far fa-envelope-open fa-5x"></i>
+      </div>
+    </div>`;
+  writeUsAlt = `
+    <h1 class="fade">Write us!</h1> 
+    <div class="app__button app__button--special app__button--schedule fade" onClick="handleWriteClick()">
+      <div class="app__svg">
+        <i class="far fa-edit fa-5x"></i>
+      </div>
+    </div>`;  
+  writeUs = `
+    <h1 class="fade">Write us!</h1> 
+    <div class="app__svg fade">
+      <i class="fas fa-pencil-alt fa-5x"></i>
+    </div>
+    <h1>
+      <p class="fade">
+        Sylvia Rivera Law Project
+      </p>
+      <p class="fade">
+        147 W 24th St, 5th Fl
+      </p>
+      <p class="fade">
+        New York, NY 10011
+      </p>
+    <h1>`;
+  comeIn = `
+    <h1 class="fade">Come to our walk-in clinic!</h1>
+    <div class="app__svg fade">
+      <i class="far fa-calendar-alt fa-5x"></i>
+    </div>
+    <h1 class="fade">We are open every Thursday 1:00-4:30 pm from May 25 through October.</h1>`;
+  legalAdvocate = `
+    <h1 class="fade">A legal advocate will see you on a first come, first served basis.</h1>
+    <h1 class="fade">Please note that when there are many people, you will have to wait to speak to an SRLP advocate.</h1>`;  
+  getBackToYou = `
+    <h1 class="fade">Someone will get back to you as soon as possible, keeping in mind the urgency of your legal need.</h1>
+    <h1 class="fade">Please note our legal help line and legal email line is open all year long!</h1>`;
+  unableToUse = `
+    <h1 class="fade">People unable to use the phone, email, or walk-in system can write us a letter.
+    <h1 class="fade">If you are incarcerated and need to use the name of an attorney, you can add "Attn: Mik Kinkead, Esq."</h1>`;
+  let transgenderYesNo = `
+    <div class="app__buttons fade">
+      <div class="app__button app__button--yes" onClick="handleTransgenderClick()">Yes</div>
+      <div class="app__button app__button--no" onClick="handleTransgenderNoClick()">No</div>
+    </div>`;
+  newYorkYesNo = `
+    <div class="app__buttons fade">
+      <div class="app__button app__button--yes" onClick="handleNewYorkClick()">Yes</div>
+      <div class="app__button app__button--no" onClick="handleNewYorkNoClick()">No</div>
+    </div>`;
+  next = `
+    <div class="app__buttons fade"><div class="app__button" onClick="handleNextClick()">Next</div></div>`; 
   replacePage(transgenderQuestion + transgenderYesNo, 'transgender', '#007ac7');
 }
 
@@ -173,7 +289,7 @@ const handleEspClick = () => {
       <i class="fas fa-transgender-alt fa-5x"></i>
     </div>`;
   liveInNewYork = `
-    <h1 class="fade">&iquest;Vive en la C&iacute;udad de Nueva York o est&aacute; encarceladx en el Estado de Nueva York?</h1>
+    <h1 class="fade">&iquest;Vive en la Ciudad de Nueva York o est&aacute; encarceladx en el Estado de Nueva York?</h1>
     <div class="app__svg fade">  
       <i class="far fa-map fa-5x"></i>
     </div>`;
@@ -221,7 +337,7 @@ const handleEspClick = () => {
       </div>
     </div>`;
   emailUs = `
-    <h1 class="fade">Env&iacute;enos un correo electr&oacute;nico a info@srlp.org o cont&aacute;ctenos <a href="https://srlp.org/about/contact/">aqu&iacute;</a>.</h1>
+    <h1 class="fade">O env&iacute;enos un correo electr&oacute;nico a info@srlp.org o cont&aacute;ctenos <a href="https://srlp.org/about/contact/">aqu&iacute;</a>.</h1>
     <div class="app__svg fade">
       <i class="fas fa-envelope-open fa-5x"></i>
     </div>`;
