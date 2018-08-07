@@ -18,6 +18,11 @@ let liveInNewYork = `
   <div class="app__svg fade">  
     <i class="far fa-map fa-5x"></i>
   </div>`;
+let liveInNewYorkIntermediate = `
+  <h1 class='fade'>SRLP provides direct representation for low-income TGNCI people and TGNCI people of color in three main areas: Survival & Self-Determination, Immigrant Justice, and Prisoner Justice. For more information, click <a href='https://srlp.org/about/legal-services/'>here</a>.</h1>
+  <h1 class='fade'>If we can’t represent you, we can provide referrals and information on a wide range of legal issues.</h1>
+  <div class="app__buttons fade"><div class="app__button" onClick="handleNewYorkClick()">Next</div></div>
+`;  
 let notTransgender = `
   <h1 class="fade">The best place to start looking for legal services if you are not TGNCI is your local legal aid office.</h1>
   <div class="app__svg fade">  
@@ -119,7 +124,7 @@ let transgenderYesNo = `
   </div>`;
 let newYorkYesNo = `
   <div class="app__buttons fade">
-    <div class="app__button app__button--yes" onClick="handleNewYorkClick()">Yes</div>
+    <div class="app__button app__button--yes" onClick="handleNewYorkIntermediateClick()">Yes</div>
     <div class="app__button app__button--no" onClick="handleNewYorkNoClick()">No</div>
   </div>`;
 let next = `
@@ -174,6 +179,11 @@ const handleEngClick = () => {
     <div class="app__svg fade">  
       <i class="far fa-map fa-5x"></i>
     </div>`;
+  liveInNewYorkIntermediate = `
+    <h1 class='fade'>SRLP provides direct representation for low-income TGNCI people and TGNCI people of color in three main areas: Survival & Self-Determination, Immigrant Justice, and Prisoner Justice. For more information, click <a href='https://srlp.org/about/legal-services/'>here</a>.</h1>
+    <h1 class='fade'>If we can&apos;t represent you, we can provide referrals and information on a wide range of legal issues.</h1>
+    <div class="app__buttons fade"><div class="app__button" onClick="handleNewYorkClick()">Next</div></div>
+  `;  
   notTransgender = `
     <h1 class="fade">The best place to start looking for legal services if you are not TGNCI is your local legal aid office.</h1>
     <div class="app__svg fade">  
@@ -274,7 +284,7 @@ const handleEngClick = () => {
     </div>`;
   newYorkYesNo = `
     <div class="app__buttons fade">
-      <div class="app__button app__button--yes" onClick="handleNewYorkClick()">Yes</div>
+      <div class="app__button app__button--yes" onClick="handleNewYorkIntermediateClick()">Yes</div>
       <div class="app__button app__button--no" onClick="handleNewYorkNoClick()">No</div>
     </div>`;
   next = `
@@ -293,6 +303,11 @@ const handleEspClick = () => {
     <div class="app__svg fade">  
       <i class="far fa-map fa-5x"></i>
     </div>`;
+  liveInNewYorkIntermediate = `
+    <h1 class='fade'>SRLP proporciona representaci&oacute;n directa para personas TGNCI de bajos ingresos y personas de color TGNCI en tres &aacute;reas principales: Supervivencia y Autodeterminaci&oacute;n, Justicia Inmigrante y Justicia de Prisioneros. Para obtener m&aacute;s informaci&oacute;n, haga clic <a href='https://srlp.org/about/legal-services/'>aqu&iacute;</a>.</h1>
+    <h1 class='fade'>Si no podemos representarlx, podemos proporcionar referencias e informaci&oacute;n sobre una amplia variedad de asuntos legales.</h1>
+    <div class="app__buttons fade"><div class="app__button" onClick="handleNewYorkClick()">Pr&oacute;xima</div></div>
+  `;  
   notTransgender = `
     <h1 class="fade">El mejor lugar para comenzar a buscar servicios legales si no es TGNCI es su oficina local de "legal aid" (ayuda legal gratuita).</h1>
     <div class="app__svg fade">  
@@ -394,7 +409,7 @@ const handleEspClick = () => {
     </div>`;
   newYorkYesNo = `
     <div class="app__buttons fade">
-      <div class="app__button app__button--yes" onClick="handleNewYorkClick()">S&iacute;</div>
+      <div class="app__button app__button--yes" onClick="handleNewYorkIntermediateClick()">S&iacute;</div>
       <div class="app__button app__button--no" onClick="handleNewYorkNoClick()">No</div>
     </div>`;
   next = `
@@ -405,6 +420,10 @@ const handleEspClick = () => {
 
 const handleNewYorkClick = () => {
   replacePage(scheduledAppointment + walkinHours + difficultOrNotPossible, 'come-in', '#26A65B');
+}
+
+const handleNewYorkIntermediateClick = () => {
+  replacePage(liveInNewYorkIntermediate, 'intermediate', '#b64541');
 }
 
 const handleNewYorkNoClick = () => {
@@ -453,6 +472,8 @@ const handleBack = () => {
   } else if ($('.live-in-new-york').length || $('.not-transgender').length) {
     replacePage(transgenderQuestion + transgenderYesNo, 'transgender', '#007ac7');
   } else if ($('.come-in').length) {
+    replacePage(liveInNewYorkIntermediate, 'intermediate', '#d64541');
+  } else if ($('.intermediate').length) {
     replacePage(liveInNewYork + newYorkYesNo, 'live-in-new-york', '#f9690e');
   } else if ($('.schedule').length || $('.walk-in').length || $('.difficult').length) {
     replacePage(scheduledAppointment + walkinHours + difficultOrNotPossible, 'come-in', '#36a65b');
